@@ -1,12 +1,11 @@
 import { useState } from "react"
+import { aesEncryption, aesEncryptionFile } from "../../algorithms/aes"
 import {
   AES_KEY_BITS,
   IV_BYTES,
   PBKDF2_ITERATIONS,
   SALT_BYTES,
-  aesEncryption,
-  aesEncryptionFile,
-} from "../../algorithms/aes"
+} from "../../algorithms/aes/core"
 import { EncryptionForm } from "../../components/EncryptionForm/EncryptionForm"
 import { INPUT_MODE_FILE } from "../../components/EncryptionForm/constants"
 import styles from "./index.module.css"
