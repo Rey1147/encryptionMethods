@@ -1,30 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { PermutationEncryptionPage } from './pages/PermutationEncryptionPage/PermutationEncryptionPage.jsx'
-import { VigenereEncryptionPage } from './pages/VigenereEncryptionPage/VigenereEncryptionPage.jsx'
-import { GammaEncryptionPage } from './pages/GammaEncryptionPage/GammaEncryptionPage.jsx'
-import { FeistelEncryptionPage } from './pages/FeistelEncryptionPage/FeistelEncryptionPage.jsx'
-import { MainPage } from './pages/MainPage.jsx';
+import { RouterProvider } from 'react-router-dom'
+import router from './routes/router.jsx'
 import App from './App.jsx'
 import './main.module.css'
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    loader: async() => {
-      return null
-    },
-    children: [
-      { index: true, element: <MainPage /> },
-      { path: "permutation", element: <PermutationEncryptionPage /> },
-      { path: "vigenere", element: <VigenereEncryptionPage /> },
-      { path: "gamma", element: <GammaEncryptionPage /> },
-      { path: "feistel", element: <FeistelEncryptionPage /> }
-    ]
-  },
-]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
