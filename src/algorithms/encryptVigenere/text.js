@@ -91,10 +91,6 @@ const nthAlphaChar = (text, n) => {
   return null
 }
 
-/**
- * Автоключ: после букв ключевого слова гамма — буквы открытого текста
- * (учитываются только символы кириллического алфавита).
- */
 export const encryptVigenereAutokey = (text, key) => {
   if (typeof text !== "string" || typeof key !== "string" || !key.length) {
     return ""

@@ -6,10 +6,6 @@ import {
   gammaEncryptLfsr,
 } from "./text"
 
-/**
- * @param {object} [options]
- * @param {boolean} [options.useLfsr] — гамма из РСЛОС вместо повторения ключа
- */
 export const gammaEncryption = (text, key, type = "encrypt", options = {}) => {
   const useLfsr = options.useLfsr === true
   if (type === "encrypt") {

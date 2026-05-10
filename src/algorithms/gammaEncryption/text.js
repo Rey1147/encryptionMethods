@@ -1,6 +1,5 @@
 import { generateLfsrBitString } from "../lfsr.js"
 
-/** 16 бит на code unit — как в JavaScript (кириллица, латиница в BMP). */
 const BITS_PER_UNIT = 16
 
 export const textToBinary = (text) => {
@@ -50,7 +49,6 @@ export const gammaEncrypt = (text, key) => {
   return xorBinary(binaryText, binaryKey)
 }
 
-/** cipher — только символы '0' и '1'; остальное (пробелы, переносы) отбрасывается. */
 export const gammaDecrypt = (binaryCipher, key) => {
   if (typeof binaryCipher !== "string" || typeof key !== "string" || !key.length) {
     return ""
@@ -63,7 +61,6 @@ export const gammaDecrypt = (binaryCipher, key) => {
   return binaryToText(decryptedBinary)
 }
 
-/** Гаммирование: гамма — битовый поток РСЛОС (размер и полином — см. `algorithms/lfsr.js`). */
 export const gammaEncryptLfsr = (text, key) => {
   if (typeof text !== "string" || typeof key !== "string" || !key.length) {
     return ""

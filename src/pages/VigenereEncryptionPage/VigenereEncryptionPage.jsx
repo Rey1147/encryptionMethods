@@ -10,27 +10,36 @@ import styles from "./index.module.css"
 export const VigenereEncryptionPage = () => {
   const [resultEncod, setResultEncod] = useState("")
   const [resultDecod, setResultDecod] = useState("")
+  const [autokey, setAutokey] = useState(false)
 
-  const encode = ({ inputMode, key, text, file }) => {
+  const encode = ({ inputMode, key, text, file, featureEnabled }) => {
+    const opts = { autokey: featureEnabled === true }
     if (inputMode === INPUT_MODE_FILE) {
-      vigenereEncryptionFile(file, key, "encrypt")
+      vigenereEncryptionFile(file, key, "encrypt", opts)
       return
     }
 
-    const result = vigenereEncryption(text, key, "encrypt")
+    const result = vigenereEncryption(text, key, "encrypt", opts)
     if (result === resultEncod) return
     setResultEncod(result)
   }
 
-  const decode = ({ inputMode, key, text, file }) => {
+  const decode = ({ inputMode, key, text, file, featureEnabled }) => {
+    const opts = { autokey: featureEnabled === true }
     if (inputMode === INPUT_MODE_FILE) {
-      vigenereEncryptionFile(file, key, "decrypt")
+      vigenereEncryptionFile(file, key, "decrypt", opts)
       return
     }
 
-    const result = vigenereEncryption(text, key, "decrypt")
+    const result = vigenereEncryption(text, key, "decrypt", opts)
     if (result === resultDecod) return
     setResultDecod(result)
+  }
+
+  const toggleProps = {
+    label: "Автоключевой режим",
+    checked: autokey,
+    onChange: setAutokey,
   }
 
   return (
@@ -44,6 +53,7 @@ export const VigenereEncryptionPage = () => {
           fileInputLabel="Файл для шифрования"
           onProcess={encode}
           result={resultEncod}
+          featureToggle={toggleProps}
         />
       </div>
       <div className={styles.wrapper}>
@@ -54,6 +64,7 @@ export const VigenereEncryptionPage = () => {
           fileInputLabel="Файл для дешифрования"
           onProcess={decode}
           result={resultDecod}
+          featureToggle={toggleProps}
         />
       </div>
     </section>

@@ -6,10 +6,6 @@ import {
   encryptVigenereAutokey,
 } from "./text"
 
-/**
- * @param {object} [options]
- * @param {boolean} [options.autokey] — автоключевой режим Виженера
- */
 export const vigenereEncryption = (text, key, type = "encrypt", options = {}) => {
   const autokey = options.autokey === true
   if (type === "encrypt") {

@@ -3,6 +3,7 @@ import { Input } from "../../view/Input/Input"
 import { Textarea } from "../../view/Input/Textarea"
 import { Button } from "../../view/Button/Button"
 import { Select } from "../../view/Select/Select"
+import { Checkbox } from "../../view/Checkbox/Checkbox"
 import {
   INPUT_MODE_FILE,
   INPUT_MODE_TEXT,
@@ -26,6 +27,7 @@ export const EncryptionForm = ({
   result = "",
   className,
   headingClassName,
+  featureToggle,
 }) => {
   const [inputMode, setInputMode] = useState(INPUT_MODE_TEXT)
   const [key, setKey] = useState("")
@@ -38,6 +40,7 @@ export const EncryptionForm = ({
       key,
       text,
       file,
+      featureEnabled: featureToggle ? featureToggle.checked : false,
     })
   }
 
@@ -89,6 +92,14 @@ export const EncryptionForm = ({
           onChange={(e) => setKey(e.target.value)}
           required
         />
+        {featureToggle ? (
+          <Checkbox
+            checked={featureToggle.checked}
+            onChange={featureToggle.onChange}
+          >
+            {featureToggle.label}
+          </Checkbox>
+        ) : null}
         <Button type="button" onClick={run}>
           {submitLabel}
         </Button>
