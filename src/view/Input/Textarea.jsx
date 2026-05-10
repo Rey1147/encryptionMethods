@@ -15,6 +15,9 @@ export const Textarea = (props) => {
         value={props?.value}
         onChange={props.onChange}
         required={props?.required}
+        spellCheck={props?.spellCheck ?? false}
+        autoCorrect={props?.autoCorrect ?? "off"}
+        autoCapitalize={props?.autoCapitalize ?? "off"}
       />
     </label>
   )

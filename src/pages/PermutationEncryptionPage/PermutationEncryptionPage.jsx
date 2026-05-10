@@ -109,7 +109,7 @@ export const PermutationEncryptionPage = () => {
           {encodMode === MODE_TEXT && Boolean(resultEncod) &&
             <div className={styles.encrypt__result}>
               <p>Результат:</p>
-              <p>{resultEncod}</p>
+              <p className={styles.encrypt__result_text}>{resultEncod}</p>
             </div>
           }
         </div>
@@ -157,7 +157,7 @@ export const PermutationEncryptionPage = () => {
           {decodMode === MODE_TEXT && Boolean(resultDecod) &&
             <div className={styles.encrypt__result}>
               <p>Результат:</p>
-              <p>{resultDecod}</p>
+              <p className={styles.encrypt__result_text}>{resultDecod}</p>
             </div>
           }
         </div>
