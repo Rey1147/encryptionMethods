@@ -1,8 +1,6 @@
 import styles from './index.module.css'
 
 export const Button = ({ children, ...props }) => {
-  console.log(props?.onClick);
-  
   return (
     <button
       type={props?.type || 'button'}
