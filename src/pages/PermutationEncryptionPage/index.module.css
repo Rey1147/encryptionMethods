@@ -1,0 +1,23 @@
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.encrypt {
+  margin: 16px 0;
+}
+
+.encrypt__form {
+  margin: 16px 0;
+}
+
+.encrypt__result {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 800px;
+  max-height: 300px;
+  display: flex;
+  gap: 10px;
+}

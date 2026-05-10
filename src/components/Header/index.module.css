@@ -1,0 +1,17 @@
+.header {
+  height: 70px;
+  background-color: #c5c5d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 32px;
+  border-bottom: 3px solid #817e7e;
+}
+
+.title {
+  color: #2c2b2b;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 3px;
+}
