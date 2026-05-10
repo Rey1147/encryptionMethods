@@ -1,0 +1,13 @@
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.wrapper {
+  max-width: 800px;
+  background-color: #c5c5d3;
+  padding: 10px 30px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
