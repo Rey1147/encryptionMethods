@@ -79,3 +79,90 @@ export const decryptVigenere = (text, key) => {
 
   return result
 }
+
+const nthAlphaChar = (text, n) => {
+  let count = 0
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i]
+    if (alphabetIndex(ch) === -1) continue
+    if (count === n) return ch
+    count++
+  }
+  return null
+}
+
+/**
+ * Автоключ: после букв ключевого слова гамма — буквы открытого текста
+ * (учитываются только символы кириллического алфавита).
+ */
+export const encryptVigenereAutokey = (text, key) => {
+  if (typeof text !== "string" || typeof key !== "string" || !key.length) {
+    return ""
+  }
+
+  let result = ""
+  let alphaPos = 0
+  const kl = key.length
+
+  for (let i = 0; i < text.length; i++) {
+    const textChar = text[i]
+    const textPos = alphabetIndex(textChar)
+
+    if (textPos === -1) {
+      result += textChar
+      continue
+    }
+
+    const ksChar =
+      alphaPos < kl
+        ? key[alphaPos]
+        : nthAlphaChar(text, alphaPos - kl)
+
+    const keyPos = shiftKeyPosition(ksChar)
+    const encryptedPos = (textPos + keyPos) % ALPH_UPPER.length
+
+    result += isLowerCase(textChar)
+      ? ALPH_LOWER[encryptedPos]
+      : ALPH_UPPER[encryptedPos]
+    alphaPos++
+  }
+
+  return result
+}
+
+export const decryptVigenereAutokey = (text, key) => {
+  if (typeof text !== "string" || typeof key !== "string" || !key.length) {
+    return ""
+  }
+
+  let result = ""
+  let alphaPos = 0
+  const kl = key.length
+  const plainAlpha = []
+
+  for (let i = 0; i < text.length; i++) {
+    const textChar = text[i]
+    const textPos = alphabetIndex(textChar)
+
+    if (textPos === -1) {
+      result += textChar
+      continue
+    }
+
+    const ksChar =
+      alphaPos < kl ? key[alphaPos] : plainAlpha[alphaPos - kl]
+
+    const keyPos = shiftKeyPosition(ksChar)
+    const decryptedPos =
+      (textPos - keyPos + ALPH_UPPER.length) % ALPH_UPPER.length
+
+    const outChar = isLowerCase(textChar)
+      ? ALPH_LOWER[decryptedPos]
+      : ALPH_UPPER[decryptedPos]
+    result += outChar
+    plainAlpha.push(outChar)
+    alphaPos++
+  }
+
+  return result
+}
