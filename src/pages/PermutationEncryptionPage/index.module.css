@@ -4,11 +4,34 @@
   line-height: 120%;
 }
 
+.wrapper {
+  max-width: 800px;
+  background-color: #c5c5d3;
+  padding: 10px 30px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
 .encrypt {
   margin: 16px 0;
 }
 
+.decrypt {
+  margin: 16px 0;
+}
+
+.form__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .encrypt__form {
+  margin: 16px 0;
+}
+
+.decrypt__form {
   margin: 16px 0;
 }
 
@@ -16,8 +39,81 @@
   background-color: white;
   padding: 10px 20px;
   border-radius: 10px;
-  width: 800px;
+  width: 600px;
+  max-width: 100%;
   max-height: 300px;
   display: flex;
   gap: 10px;
+}
+
+.modeSelect {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(46, 41, 76);
+  background-color: #fff;
+  border: 1.5px solid #d2d2d2;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.modeSelect:hover {
+  border-color: #6b83ab;
+}
+
+.modeSelect:focus {
+  border-color: #6b83ab;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.fileInput__label {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+input.fileInput {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  max-height: none;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1.5px dashed #b6b6c5;
+  color: rgb(46, 41, 76);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+input.fileInput:hover {
+  border-color: #6b83ab;
+}
+
+.fileInput::file-selector-button {
+  padding: 6px 14px;
+  margin-right: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #6b83ab;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fileInput::file-selector-button:hover {
+  background-color: #4f658a;
 }
