@@ -1,15 +1,17 @@
+const PAD = '*'
+
 const getColumnOrder = (key) => {
   let chars = key.split("").map((char, index) => ({
     char,
     index
   }))
-  
+
   chars.sort((a, b) => {
     if (a.char < b.char) return -1
     if (a.char > b.char) return 1
     return a.index - b.index
   })
-  
+
   let order = []
 
   chars.forEach((item, i) => {
@@ -21,14 +23,12 @@ const getColumnOrder = (key) => {
 
 
 export const encrypt = (text, key) => {
-  text = text.replace(/\s+/g, "")
-
   const cols = key.length
   const order = getColumnOrder(key)
   const rows = Math.ceil(text.length / cols)
 
   let table = Array.from({ length: rows }, () =>
-    Array(cols).fill(" ")
+    Array(cols).fill(PAD)
   )
 
   let index = 0
@@ -50,7 +50,7 @@ export const encrypt = (text, key) => {
     }
   }
 
-  return encrypted.replace(/\s+$/g, "")
+  return encrypted
 }
 
 export const decrypt = (cipher, key) => {
@@ -59,7 +59,7 @@ export const decrypt = (cipher, key) => {
   const rows = Math.ceil(cipher.length / cols)
 
   let table = Array.from({ length: rows }, () =>
-      Array(cols).fill(" ")
+      Array(cols).fill(PAD)
   )
 
   let index = 0
@@ -81,5 +81,5 @@ export const decrypt = (cipher, key) => {
     }
   }
 
-  return decrypted.trim()
+  return decrypted.replace(/\*+$/, "")
 }
