@@ -1,5 +1,7 @@
 import { useState } from "react"
 import {
+  BLOCK_BYTES,
+  FEISTEL_ROUNDS,
   feistelEncryption,
   feistelEncryptionFile,
 } from "../../algorithms/feistel"
@@ -36,6 +38,22 @@ export const FeistelEncryptionPage = () => {
   return (
     <section>
       <h2 className={styles.title}>Сеть Фейстеля</h2>
+      <aside className={styles.spec} aria-label="Параметры шифра">
+        <p className={styles.specLead}>Формат данных в этой версии приложения:</p>
+        <div className={styles.specChips}>
+          <span className={styles.chip}>
+            Блок {BLOCK_BYTES} байт{' '}
+            <span className={styles.chipMuted}>· 32+32 бит</span>
+          </span>
+          <span className={styles.chip}>{FEISTEL_ROUNDS} раундов</span>
+          <span className={styles.chip}>
+            Текст → <strong>Base64</strong>
+          </span>
+          <span className={styles.chip}>
+            Файл → <strong>PKCS#7</strong>, бинарь
+          </span>
+        </div>
+      </aside>
       <div className={styles.wrapper}>
         <EncryptionForm
           title="Шифрование"
