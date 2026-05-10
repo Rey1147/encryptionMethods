@@ -5,7 +5,7 @@ import styles from './main.module.css'
 const navigation = [
   { title: 'Метод перестановки', link: '/permutation' },
   { title: 'Полиалфавитный шифр Виженера', link: '/vigenere' },
-  { title: 'Гаммирование', link: '/' },
+  { title: 'Гаммирование', link: '/gamma' },
   { title: 'Автоключевое шифрование', link: '/' }
 ]
 
