@@ -4,7 +4,8 @@ import { MainPage } from "../pages/MainPage";
 import { PermutationEncryptionPage } from "../pages/PermutationEncryptionPage/PermutationEncryptionPage";
 import { VigenereEncryptionPage } from "../pages/VigenereEncryptionPage/VigenereEncryptionPage";
 import { GammaEncryptionPage } from "../pages/GammaEncryptionPage/GammaEncryptionPage";
-import { FeistelEncryptionPage } from "../pages/FeistelEncryptionPage/FeistelEncryptionPage";
+import { FeistelEncryptionPage } from "../pages/FeistelEncryptionPage/FeistelEncryptionPage"
+import { AesEncryptionPage } from "../pages/AesEncryptionPage/AesEncryptionPage"
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,8 @@ const routes = createBrowserRouter([
       { path: "permutation", element: <PermutationEncryptionPage /> },
       { path: "vigenere", element: <VigenereEncryptionPage /> },
       { path: "gamma", element: <GammaEncryptionPage /> },
-      { path: "feistel", element: <FeistelEncryptionPage /> }
+      { path: "feistel", element: <FeistelEncryptionPage /> },
+      { path: "aes", element: <AesEncryptionPage /> }
     ]
   },
 ])

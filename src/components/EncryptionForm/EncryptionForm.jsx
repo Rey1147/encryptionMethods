@@ -35,12 +35,16 @@ export const EncryptionForm = ({
   const [file, setFile] = useState(null)
 
   const run = () => {
-    onProcess({
-      inputMode,
-      key,
-      text,
-      file,
-      featureEnabled: featureToggle ? featureToggle.checked : false,
+    void Promise.resolve(
+      onProcess({
+        inputMode,
+        key,
+        text,
+        file,
+        featureEnabled: featureToggle ? featureToggle.checked : false,
+      }),
+    ).catch((err) => {
+      console.error(err)
     })
   }
 
