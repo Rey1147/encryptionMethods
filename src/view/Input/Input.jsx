@@ -3,7 +3,7 @@ import styles from './index.module.css'
 export const Input = (props) => {
   return (
     <>
-      <label 
+      <label
         for={props?.name}
         className={styles.input__label}
       >

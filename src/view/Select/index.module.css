@@ -1,0 +1,22 @@
+.select {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(46, 41, 76);
+  background-color: #fff;
+  border: 1.5px solid #d2d2d2;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.select:hover {
+  border-color: #6b83ab;
+}
+
+.select:focus {
+  border-color: #6b83ab;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
