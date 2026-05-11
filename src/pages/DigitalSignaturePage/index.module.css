@@ -1,0 +1,125 @@
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.spec {
+  max-width: 800px;
+  margin: 15px 0 20px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1.5px solid rgba(107, 131, 171, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(46, 41, 76, 0.06);
+}
+
+.specLead {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(74, 70, 100);
+}
+
+.specChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 11px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: rgb(46, 41, 76);
+  background-color: #fff;
+  border: 1.5px solid #d2d2d2;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.chip strong {
+  font-weight: 600;
+  color: #50617f;
+}
+
+.chipMuted {
+  font-weight: 400;
+  color: rgb(106, 100, 130);
+}
+
+.wrapper {
+  max-width: 800px;
+  background-color: #c5c5d3;
+  padding: 16px 30px 20px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: rgb(46, 41, 76);
+}
+
+.hint {
+  font-size: 13px;
+  color: rgb(74, 70, 100);
+  margin: 0 0 14px;
+  line-height: 1.45;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(46, 41, 76);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileInput {
+  width: 100%;
+  max-width: 600px;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1.5px dashed #b6b6c5;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.statusOk {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(80, 140, 90, 0.2);
+  border: 1.5px solid #5a8a65;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2d4a32;
+}
+
+.statusBad {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(180, 80, 80, 0.15);
+  border: 1.5px solid #b45a5a;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5a2020;
+}

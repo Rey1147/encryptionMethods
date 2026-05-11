@@ -8,6 +8,7 @@ const navigation = [
   { title: 'Гаммирование', link: '/gamma' },
   { title: 'Сеть Фейстеля', link: '/feistel' },
   { title: 'AES', link: '/aes' },
+  { title: 'ЭЦП', link: '/signature' },
 ]
 
 function App() {
