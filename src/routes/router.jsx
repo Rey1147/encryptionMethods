@@ -7,6 +7,7 @@ import { GammaEncryptionPage } from "../pages/GammaEncryptionPage/GammaEncryptio
 import { FeistelEncryptionPage } from "../pages/FeistelEncryptionPage/FeistelEncryptionPage"
 import { AesEncryptionPage } from "../pages/AesEncryptionPage/AesEncryptionPage"
 import { DigitalSignaturePage } from "../pages/DigitalSignaturePage/DigitalSignaturePage"
+import { RsaEncryptionPage } from "../pages/RsaEncryptionPage/RsaEncryptionPage"
 
 const routes = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const routes = createBrowserRouter([
       { path: "gamma", element: <GammaEncryptionPage /> },
       { path: "feistel", element: <FeistelEncryptionPage /> },
       { path: "aes", element: <AesEncryptionPage /> },
-      { path: "signature", element: <DigitalSignaturePage /> }
+      { path: "signature", element: <DigitalSignaturePage /> },
+      { path: "rsa", element: <RsaEncryptionPage /> }
     ]
   },
 ])

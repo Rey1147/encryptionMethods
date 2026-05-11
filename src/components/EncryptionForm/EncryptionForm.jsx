@@ -28,24 +28,58 @@ export const EncryptionForm = ({
   className,
   headingClassName,
   featureToggle,
+  /** Многострочный ключ (например JWK JSON для RSA) */
+  keyMultiline = false,
+  keyLabel = "Ключ",
+  keyPlaceholder = "Ключ",
+  keyRows = 6,
+  /** Ключ задаётся файлом .jwk (содержимое читается как UTF-8) */
+  keyFromFile = false,
+  keyFileLabel = "Файл ключа (JWK)",
+  keyFileAccept = ".jwk,.json,application/json",
 }) => {
   const [inputMode, setInputMode] = useState(INPUT_MODE_TEXT)
   const [key, setKey] = useState("")
+  const [keyFile, setKeyFile] = useState(null)
   const [text, setText] = useState("")
   const [file, setFile] = useState(null)
 
-  const run = () => {
-    void Promise.resolve(
-      onProcess({
-        inputMode,
-        key,
-        text,
-        file,
-        featureEnabled: featureToggle ? featureToggle.checked : false,
-      }),
-    ).catch((err) => {
-      console.error(err)
+  const readKeyFileAsText = (f) =>
+    new Promise((resolve, reject) => {
+      const r = new FileReader()
+      r.onload = () => resolve(String(r.result))
+      r.onerror = () => reject(r.error)
+      r.readAsText(f, "utf-8")
     })
+
+  const run = () => {
+    void (async () => {
+      try {
+        let keyPayload = key
+        if (keyFromFile) {
+          if (!keyFile) {
+            alert("Выберите файл ключа")
+            return
+          }
+          keyPayload = (await readKeyFileAsText(keyFile)).trim()
+          if (!keyPayload) {
+            alert("Файл ключа пуст")
+            return
+          }
+        }
+        await Promise.resolve(
+          onProcess({
+            inputMode,
+            key: keyPayload,
+            text,
+            file,
+            featureEnabled: featureToggle ? featureToggle.checked : false,
+          }),
+        )
+      } catch (err) {
+        console.error(err)
+      }
+    })()
   }
 
   return (
@@ -89,13 +123,37 @@ export const EncryptionForm = ({
             />
           </label>
         )}
-        <Input
-          type="text"
-          placeholder="Ключ"
-          value={key}
-          onChange={(e) => setKey(e.target.value)}
-          required
-        />
+        {keyFromFile ? (
+          <label className={styles.fileInput__label}>
+            {keyFileLabel}
+            <input
+              className={styles.fileInput}
+              type="file"
+              accept={keyFileAccept}
+              onChange={(e) => setKeyFile(e.target.files?.[0] ?? null)}
+              required
+            />
+          </label>
+        ) : keyMultiline ? (
+          <Textarea
+            type="text"
+            name={keyLabel}
+            placeholder={keyPlaceholder}
+            value={key}
+            onChange={(e) => setKey(e.target.value)}
+            required
+            rows={keyRows}
+          />
+        ) : (
+          <Input
+            type="text"
+            name={keyLabel}
+            placeholder={keyPlaceholder}
+            value={key}
+            onChange={(e) => setKey(e.target.value)}
+            required
+          />
+        )}
         {featureToggle ? (
           <Checkbox
             checked={featureToggle.checked}

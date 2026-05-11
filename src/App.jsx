@@ -9,6 +9,7 @@ const navigation = [
   { title: 'Сеть Фейстеля', link: '/feistel' },
   { title: 'AES', link: '/aes' },
   { title: 'ЭЦП', link: '/signature' },
+  { title: 'RSA', link: '/rsa' },
 ]
 
 function App() {
