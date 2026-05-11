@@ -13,6 +13,7 @@ const RSA_GEN_ALG = {
 }
 
 const RSA_OAEP_PARAMS = { name: "RSA-OAEP", hash: "SHA-256" }
+const RSA_OAEP_IMPORT_ALG = { name: "RSA-OAEP", hash: "SHA-256" }
 
 export const assertSubtle = () => {
   if (!globalThis.crypto?.subtle) {
@@ -40,13 +41,13 @@ export const exportPrivateJwkJson = async (privateKey) => {
 export const importPublicKeyForEncrypt = async (jwkString) => {
   assertSubtle()
   const jwk = JSON.parse(jwkString)
-  return crypto.subtle.importKey("jwk", jwk, RSA_GEN_ALG, false, ["encrypt"])
+  return crypto.subtle.importKey("jwk", jwk, RSA_OAEP_IMPORT_ALG, false, ["encrypt"])
 }
 
 export const importPrivateKeyForDecrypt = async (jwkString) => {
   assertSubtle()
   const jwk = JSON.parse(jwkString)
-  return crypto.subtle.importKey("jwk", jwk, RSA_GEN_ALG, false, ["decrypt"])
+  return crypto.subtle.importKey("jwk", jwk, RSA_OAEP_IMPORT_ALG, false, ["decrypt"])
 }
 
 export const importAesSessionKey = async (raw32) => {
